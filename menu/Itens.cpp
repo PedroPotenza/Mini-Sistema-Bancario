@@ -3,6 +3,14 @@
 #include <iostream>
 #include <string>
 
+//fazer todas as opções do menu
+//1. Lista clientes
+//2. Lista contas
+//3. Saldo do cliente
+//4. Extrato do cliente
+//5. Realizar transferencia
+//6. Mostrar o balanco (outro nome)
+
 class MenuOlaMundo : public menu::MenuItem
 {
 	virtual void comportamento()
