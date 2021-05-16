@@ -1,0 +1,43 @@
+Banco
+private:
+	- int balanco
+	- int id (key)
+public:
+	- get e set balanco ()
+	- id inicializado direto()
+--------------------------------
+Cliente
+private
+	- string nome
+	- int cpf (key)
+public
+	- get e set Nome()
+	- get e set do cpf()
+--------------------------------
+Conta : Cliente
+private:
+	- int saldo
+public: 
+	- get e set do saldo()
+	- geraExtrato() //usar um vector e ir aumentando 
+			conforme as transferencias 
+			forem acontecendo
+	- imprimeExtrato() //imprime o vector extrato
+--------------------------------
+Transferencia
+public:
+	- transferencia(pessoa 1, int valor_pagando, pessoa 2, int valor_recebendo)
+		//toda vez q acontecer uma transferencia, vai ter um
+			geraExtrato(pessoa 1, int valor_pagando)
+			geraExtrato(pessoa 2, int valor_recebendo) //
+
+
+
+
+
+
+
+
+
+
+
