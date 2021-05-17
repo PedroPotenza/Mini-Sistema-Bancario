@@ -14,9 +14,8 @@
 			inline void setCpf(int y);
 
 			Cliente(std::string nome, int cpf) : nome(nome),cpf(cpf){
-
 			}
-			
+		
 	};
 	
 	//getters e setters desnecessários
