@@ -1,4 +1,5 @@
 #include "MenuItem.hpp"
+#include "Listas.cpp"
 
 #include <iostream>
 #include <vector>
@@ -13,8 +14,7 @@ class MenuListaClientes : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		
-		
+		imprimirClientes();
 	}
 };
 
@@ -27,8 +27,7 @@ class MenuListaContas : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		//std::cout << "Nome: " << p1->getNome() << std::endl;
-		//std::cout << "CPF: " << p1->getCpf() << std::endl;
+		imprimirContas();
 	}
 };
 
@@ -41,8 +40,7 @@ class MenuSaldoCliente : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		//std::cout << "Nome: " << p1->getNome() << std::endl;
-		//std::cout << "CPF: " << p1->getCpf() << std::endl;
+		saldoCliente();
 	}
 };
 

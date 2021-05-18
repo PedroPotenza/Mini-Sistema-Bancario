@@ -10,7 +10,8 @@
 			static int numeroContas;
 			int id;
 			int	saldo;
-			//poderia implementar tambem um int id_agencia para  saber a qual agencia essa conta pertence, mas n vou adicionar para n complicar
+			//poderia implementar tambem um int id_agencia para  saber a qual agencia essa conta pertence, 
+			//mas n vou adicionar para n complicar
 		public:
 			inline int getSaldo() const;
 			inline void setSaldo(int x);

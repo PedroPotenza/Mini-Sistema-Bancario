@@ -4,6 +4,8 @@
 #include "Conta.hpp"
 #include "Banco.hpp"
 
+#include "Listas.cpp"
+
 //menu
 #include "menu/Menu.hpp"
 #include "menu/Menu.cpp"
@@ -19,20 +21,18 @@ int Banco::balanco(0);
 int main(int argc, char* argv[]){
 
 	Banco* agencia = new Banco();
-
-	std::vector<Cliente*> Clientes;
-	Clientes.push_back(new Cliente(std::string("Arthur"),892));
-	Clientes.push_back(new Cliente(std::string("Clovis"),7));
-	Clientes.push_back(new Cliente(std::string("Carlos"),9));
-	Clientes.push_back(new Cliente(std::string("Klaus"),497));
-	Clientes.push_back(new Cliente(std::string("Patricia"),576));
-
-	std::vector<Conta*> Contas;
-	Clientes.push_back(new Conta(std::string("Arthur"),892,*agencia));
-	Clientes.push_back(new Conta(std::string("Clovis"),7,*agencia));
-	Clientes.push_back(new Conta(std::string("Carlos"),9,*agencia));
-	Clientes.push_back(new Conta(std::string("Arthur"),892,*agencia));
-	Clientes.push_back(new Conta(std::string("Carlos"),9,*agencia));
+//	std::vector<Cliente*> Clientes; (vector criado no Listas.cpp)
+		Clientes.push_back(new Cliente(std::string("Arthur"),892));
+		Clientes.push_back(new Cliente(std::string("Clovis"),7));
+		Clientes.push_back(new Cliente(std::string("Carlos"),9));
+		Clientes.push_back(new Cliente(std::string("Klaus"),497));
+		Clientes.push_back(new Cliente(std::string("Patricia"),576));
+//	std::vector<Conta*> Contas; (vector criado no Listas.cpp)
+	Contas.push_back(new Conta(std::string("Arthur"),892,*agencia));
+	Contas.push_back(new Conta(std::string("Clovis"),7,*agencia));
+	Contas.push_back(new Conta(std::string("Carlos"),9,*agencia));
+	Contas.push_back(new Conta(std::string("Arthur"),892,*agencia));
+	Contas.push_back(new Conta(std::string("Carlos"),9,*agencia));
 
 //	Conta* p3 = new Conta(*c1, *agencia); //tentativa q deu erro la no Conta.hpp
 	

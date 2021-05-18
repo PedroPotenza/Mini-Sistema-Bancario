@@ -10,7 +10,7 @@ menu::Menu::~Menu() //destrutor
         // remove ponteiro do último.
         this->itens.pop_back();
 
-        //assumo que não entendi muito bem essa parte
+        //assumo que nao entendi muito bem essa parte
     }
 }
 
