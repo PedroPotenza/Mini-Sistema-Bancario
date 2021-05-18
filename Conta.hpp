@@ -10,17 +10,22 @@
 			static int numeroContas;
 			int id;
 			int	saldo;
+			std::vector<int> Extrato;
 			//poderia implementar tambem um int id_agencia para  saber a qual agencia essa conta pertence, 
 			//mas n vou adicionar para n complicar
 		public:
 			inline int getSaldo() const;
 			inline void setSaldo(int x);
 			inline int getId() const;
+			inline int getExtrato(int x) const;
+			inline void setExtrato(int x);
+			inline int getTamExtrato() const;
 
 			Conta(std::string nome, int cpf, Banco& agencia) :
-				Cliente(nome,cpf),id(Conta::getNumeroContas()), saldo(1000)
+				Cliente(nome,cpf),id(Conta::getNumeroContas()), saldo(100000)
 				{
 					agencia.setBalanco(saldo);
+					setExtrato(100000);
 					//poderia aproveitar aqui e passar o id_agencia do objeto agencia
 				}
 			
@@ -51,4 +56,18 @@
 		return (this->id);
 	}
 
+	inline int Conta::getExtrato(int x) const
+	{
+		return (this->Extrato.at(x));
+	}
+
+	inline void Conta::setExtrato(int x)
+	{
+		Extrato.push_back(x);
+	}
+
+	inline int Conta::getTamExtrato() const
+	{
+		return (this->Extrato.size());
+	}
 #endif

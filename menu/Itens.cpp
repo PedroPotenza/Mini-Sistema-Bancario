@@ -1,5 +1,5 @@
 #include "MenuItem.hpp"
-#include "Listas.cpp"
+#include "../Listas.cpp"
 
 #include <iostream>
 #include <vector>
@@ -14,7 +14,7 @@ class MenuListaClientes : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		imprimirClientes();
+		showClientes();
 	}
 };
 
@@ -27,7 +27,7 @@ class MenuListaContas : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		imprimirContas();
+		showContas();
 	}
 };
 
@@ -53,8 +53,7 @@ class MenuExtratoCliente : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		//std::cout << "Nome: " << p1->getNome() << std::endl;
-		//std::cout << "CPF: " << p1->getCpf() << std::endl;
+		showExtrato();
 	}
 };
 
@@ -67,12 +66,12 @@ class MenuTransferencia : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		//std::cout << "Nome: " << p1->getNome() << std::endl;
-		//std::cout << "CPF: " << p1->getCpf() << std::endl;
+		transferencia();
 	}
 };
 
 extern Banco agencia; //não consegui achar um meio de evitar usar o extern (sei q é ruim utilizar ele por se tornar algo global certo?)
+//talvez eu poderia passar ela pelo Listas.cpp instanciando o objeto la e criando a função la.
 
 class MenuSaldoTotal : public menu::MenuItem
 {
