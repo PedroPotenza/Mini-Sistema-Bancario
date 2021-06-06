@@ -4,8 +4,6 @@
 #include "Conta.hpp"
 #include "Banco.hpp"
 
-#include "Listas.cpp"
-
 //menu
 #include "menu/Menu.hpp"
 #include "menu/Menu.cpp"
