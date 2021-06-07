@@ -8,7 +8,6 @@
 #include "menu/Menu.hpp"
 #include "menu/Menu.cpp"
 #include "menu/Itens.cpp"
-Banco agencia;
 
 // fazer um arquivo com o inicializador de todas as variaveis statics
 int Conta::numeroContas(400); //eu quis que todos os ids das contas começassem a partir de 400 pra facilitar a visualizacao
@@ -20,19 +19,20 @@ int main(int argc, char* argv[]){
 
 	Banco* agencia = new Banco();
 
-		agencia->adicionaCliente(new Cliente(std::string("Arthur"),892));
-		agencia->adicionaCliente(new Cliente(std::string("Clovis"),7));
-		agencia->adicionaCliente(new Cliente(std::string("Carlos"),9));
-		agencia->adicionaCliente(new Cliente(std::string("Klaus"),497));
-		agencia->adicionaCliente(new Cliente(std::string("Patricia"),576));
+	agencia->adicionaCliente(new Cliente(std::string("Arthur"),892));
+	agencia->adicionaCliente(new Cliente(std::string("Clovis"),7));
+	agencia->adicionaCliente(new Cliente(std::string("Carlos"),9));
+	agencia->adicionaCliente(new Cliente(std::string("Klaus"),497));
+	agencia->adicionaCliente(new Cliente(std::string("Patricia"),576));
 
 //	std::vector<Conta*> Contas; (vector criado no Listas.cpp)
-//	Contas.push_back(new Conta(std::string("Arthur"),892,*agencia));
-//	Contas.push_back(new Conta(std::string("Clovis"),7,*agencia));
-//	Contas.push_back(new Conta(std::string("Carlos"),9,*agencia));
-//	Contas.push_back(new Conta(std::string("Arthur"),892,*agencia));
-//	Contas.push_back(new Conta(std::string("Carlos"),9,*agencia));
+	agencia->adicionaConta(new Conta(std::string("Arthur"),892));
+	agencia->adicionaConta(new Conta(std::string("Clovis"),7));
+	agencia->adicionaConta(new Conta(std::string("Carlos"),9));
+	agencia->adicionaConta(new Conta(std::string("Arthur"),892));
+	agencia->adicionaConta(new Conta(std::string("Carlos"),9));
 
+	agencia->showContas();
 //	Conta* p3 = new Conta(*c1, *agencia); //tentativa q deu erro la no Conta.hpp
 	
 	menu::Menu menu;
@@ -50,5 +50,4 @@ int main(int argc, char* argv[]){
 	//std::cout << "Nome do CLIENTE: " << Clientes.at(0)->getNome() << std::endl;
 	//std::cout << "CPF do CLIENTE: " << Clientes.at(0)->getCpf() << std::endl;
 	//std::cout << "Numero de Clientes: " << Clientes.size() << std::endl;
-
 }
