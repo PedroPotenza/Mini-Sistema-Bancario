@@ -2,7 +2,6 @@
 #define CONTA_HPP
 
 #include "Cliente.hpp"
-#include "Banco.hpp"
 	
 	class Conta : public Cliente
 	{
@@ -21,10 +20,8 @@
 			inline void setExtrato(int x);
 			inline int getTamExtrato() const;
 
-			Conta(std::string nome, int cpf, Banco& agencia) :
-				Cliente(nome,cpf),id(Conta::getNumeroContas()), saldo(100000)
-				{
-					agencia.setBalanco(saldo);
+			Conta(std::string nome, int cpf) :
+				Cliente(nome,cpf),id(Conta::getNumeroContas()), saldo(100000){
 					setExtrato(100000);
 					//poderia aproveitar aqui e passar o id_agencia do objeto agencia
 				}

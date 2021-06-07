@@ -6,6 +6,8 @@
 #include <vector>
 #include <string>
 
+extern Banco agencia;
+
 class MenuListaClientes : public menu::MenuItem
 {
 	virtual const std::string nome()
@@ -70,8 +72,7 @@ class MenuTransferencia : public menu::MenuItem
 		agencia.transferencia();
 	}
 };
-
-extern Banco agencia; //não consegui achar um meio de evitar usar o extern (sei q é ruim utilizar ele por se tornar algo global certo?)
+ //não consegui achar um meio de evitar usar o extern (sei q é ruim utilizar ele por se tornar algo global certo?)
 //talvez eu poderia passar ela pelo Listas.cpp instanciando o objeto la e criando a função la.
 
 class MenuSaldoTotal : public menu::MenuItem
