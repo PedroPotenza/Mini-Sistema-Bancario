@@ -3,6 +3,7 @@
 
 #include "Conta.hpp"
 #include "Banco.hpp"
+#include "Banco.cpp"
 //Teste
 // fazer um arquivo com o inicializador de todas as variaveis statics
 int Conta::numeroContas(400); //eu quis que todos os ids das contas começassem a partir de 400 pra facilitar a visualizacao
@@ -26,7 +27,6 @@ int main(int argc, char* argv[]){
 	agencia->adicionaConta(new Conta(std::string("Carlos"),9));
 	agencia->adicionaConta(new Conta(std::string("Arthur"),892));
 	agencia->adicionaConta(new Conta(std::string("Carlos"),9));
-
 
 	do {
 		std::cout << std::endl << "Escolha um item pelo numero:" << std::endl;
