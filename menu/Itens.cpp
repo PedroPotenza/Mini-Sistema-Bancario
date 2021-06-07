@@ -1,5 +1,4 @@
 #include "MenuItem.hpp"
-#include "../Listas.cpp"
 #include "../Banco.hpp"
 
 #include <iostream>
@@ -15,7 +14,7 @@ class MenuListaClientes : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		showClientes();
+		agencia.showClientes();
 	}
 };
 
@@ -28,7 +27,7 @@ class MenuListaContas : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		showContas();
+		agencia.showContas();
 	}
 };
 
@@ -41,7 +40,7 @@ class MenuSaldoCliente : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		saldoCliente();
+		agencia.saldoCliente();
 	}
 };
 
@@ -54,7 +53,7 @@ class MenuExtratoCliente : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		showExtrato();
+		agencia.showExtrato();
 	}
 };
 
@@ -67,7 +66,7 @@ class MenuTransferencia : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		transferencia();
+		agencia.transferencia();
 	}
 };
 

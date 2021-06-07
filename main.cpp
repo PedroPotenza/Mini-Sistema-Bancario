@@ -26,11 +26,11 @@ int main(int argc, char* argv[]){
 		agencia->Clientes.push_back(new Cliente(std::string("Klaus"),497));
 		agencia->Clientes.push_back(new Cliente(std::string("Patricia"),576));
 //	std::vector<Conta*> Contas; (vector criado no Listas.cpp)
-	Contas.push_back(new Conta(std::string("Arthur"),892,*agencia));
-	Contas.push_back(new Conta(std::string("Clovis"),7,*agencia));
-	Contas.push_back(new Conta(std::string("Carlos"),9,*agencia));
-	Contas.push_back(new Conta(std::string("Arthur"),892,*agencia));
-	Contas.push_back(new Conta(std::string("Carlos"),9,*agencia));
+		agencia->Contas.push_back(new Conta(std::string("Arthur"),892,*agencia));
+		agencia->Contas.push_back(new Conta(std::string("Clovis"),7,*agencia));
+		agencia->Contas.push_back(new Conta(std::string("Carlos"),9,*agencia));
+		agencia->Contas.push_back(new Conta(std::string("Arthur"),892,*agencia));
+		agencia->Contas.push_back(new Conta(std::string("Carlos"),9,*agencia));
 
 //	Conta* p3 = new Conta(*c1, *agencia); //tentativa q deu erro la no Conta.hpp
 	
