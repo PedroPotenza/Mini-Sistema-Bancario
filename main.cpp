@@ -14,10 +14,10 @@ int Conta::numeroContas(400); //eu quis que todos os ids das contas começassem 
 int Banco::numeroAgencias(0);
 int Banco::balanco(0);
 
-
 int main(int argc, char* argv[]){
 
 	Banco* agencia = new Banco();
+	int opcao = 0;
 
 	agencia->adicionaCliente(new Cliente(std::string("Arthur"),892));
 	agencia->adicionaCliente(new Cliente(std::string("Clovis"),7));
@@ -45,9 +45,16 @@ int main(int argc, char* argv[]){
 	menu.adiciona(new MenuSaldoTotal());
 
 
-	while (menu.executa()); //vai ficar solicitando a opção até informar um numero invalido
+	do {
+		std::cout << "Escolha um item pelo numero:" << std::endl;
+		std::cout << "(0) Lista de Clientes" << std::endl;
+		std::cout << "(1) Lista de Contas" << std::endl;
+		std::cout << "(2) Saldo" << std::endl;
+		std::cout << "(3) Extrato" << std::endl;
+		std::cout << "(4) Realizar Transferencia" << std::endl;
+		std::cout << "(5) Valor Total das Contas" << std::endl;
 
-	//std::cout << "Nome do CLIENTE: " << Clientes.at(0)->getNome() << std::endl;
-	//std::cout << "CPF do CLIENTE: " << Clientes.at(0)->getCpf() << std::endl;
-	//std::cout << "Numero de Clientes: " << Clientes.size() << std::endl;
+		std::cin >> opcao;
+
+	} while (opcao != -1);
 }

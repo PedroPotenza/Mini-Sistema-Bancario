@@ -6,8 +6,6 @@
 #include <vector>
 #include <string>
 
-extern Banco agencia;
-
 class MenuListaClientes : public menu::MenuItem
 {
 	virtual const std::string nome()
@@ -17,7 +15,6 @@ class MenuListaClientes : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		agencia.showClientes();
 	}
 };
 
@@ -30,7 +27,6 @@ class MenuListaContas : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		agencia.showContas();
 	}
 };
 
@@ -43,7 +39,6 @@ class MenuSaldoCliente : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		agencia.saldoCliente();
 	}
 };
 
@@ -56,7 +51,6 @@ class MenuExtratoCliente : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		agencia.showExtrato();
 	}
 };
 
@@ -69,7 +63,6 @@ class MenuTransferencia : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		agencia.transferencia();
 	}
 };
  //não consegui achar um meio de evitar usar o extern (sei q é ruim utilizar ele por se tornar algo global certo?)
@@ -84,6 +77,6 @@ class MenuSaldoTotal : public menu::MenuItem
 
 	virtual void comportamento()
 	{
-		std::cout << "Balanco no Menu: " << agencia.getBalanco() << std::endl;
+		std::cout << "Balanco no Menu: " << std::endl;
 	}
 };
