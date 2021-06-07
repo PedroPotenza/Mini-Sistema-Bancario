@@ -1,13 +1,10 @@
 #include <vector>   
 #include <iostream> 
+#include "Banco.hpp"
 #include "Cliente.hpp"
 #include "Conta.hpp"
 
-
-std::vector<Cliente*> Clientes;
-std::vector<Conta*> Contas;
-
-void showClientes(){
+void Banco::showClientes(){
     int i;
     for(i=0; i < Clientes.size(); i++){
         std::cout << "-------Cliente "<< i + 1 << "--------\n" << std::endl;
@@ -17,7 +14,7 @@ void showClientes(){
 }
 
 
-void showContas(){
+void Banco::showContas(){
     int i;
     for(i=0; i < Contas.size(); i++){
         std::cout << "-------Conta "<< Contas.at(i)->getId() << "--------\n" << std::endl;
@@ -27,7 +24,7 @@ void showContas(){
     }
 }
 
-void saldoCliente(){
+void Banco::saldoCliente(){
     int cpflocal, saldolocal(0), i;
 
     std::cout << "CPF do Cliente desejado: " ;
@@ -42,7 +39,7 @@ void saldoCliente(){
     std::cout << "Saldo do cliente: " << saldolocal << std::endl;
 }
 
-void showExtrato(){
+void Banco::showExtrato(){
     int i, idlocal, j;
     
     std::cout << "Id da conta: ";
@@ -57,7 +54,7 @@ void showExtrato(){
     }
 }
 
-void transferencia(){
+void Banco::transferencia(){
 
     int idpaga, idrecebe, valorpago, i;
 

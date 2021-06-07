@@ -4,8 +4,6 @@
 #include "Conta.hpp"
 #include "Banco.hpp"
 
-#include "Listas.cpp"
-
 //menu
 #include "menu/Menu.hpp"
 #include "menu/Menu.cpp"
@@ -21,18 +19,19 @@ int Banco::balanco(0);
 int main(int argc, char* argv[]){
 
 	Banco* agencia = new Banco();
-//	std::vector<Cliente*> Clientes; (vector criado no Listas.cpp)
-		Clientes.push_back(new Cliente(std::string("Arthur"),892));
-		Clientes.push_back(new Cliente(std::string("Clovis"),7));
-		Clientes.push_back(new Cliente(std::string("Carlos"),9));
-		Clientes.push_back(new Cliente(std::string("Klaus"),497));
-		Clientes.push_back(new Cliente(std::string("Patricia"),576));
+
+		agencia->adicionaCliente(new Cliente(std::string("Arthur"),892));
+		agencia->adicionaCliente(new Cliente(std::string("Clovis"),7));
+		agencia->adicionaCliente(new Cliente(std::string("Carlos"),9));
+		agencia->adicionaCliente(new Cliente(std::string("Klaus"),497));
+		agencia->adicionaCliente(new Cliente(std::string("Patricia"),576));
+
 //	std::vector<Conta*> Contas; (vector criado no Listas.cpp)
-	Contas.push_back(new Conta(std::string("Arthur"),892,*agencia));
-	Contas.push_back(new Conta(std::string("Clovis"),7,*agencia));
-	Contas.push_back(new Conta(std::string("Carlos"),9,*agencia));
-	Contas.push_back(new Conta(std::string("Arthur"),892,*agencia));
-	Contas.push_back(new Conta(std::string("Carlos"),9,*agencia));
+//	Contas.push_back(new Conta(std::string("Arthur"),892,*agencia));
+//	Contas.push_back(new Conta(std::string("Clovis"),7,*agencia));
+//	Contas.push_back(new Conta(std::string("Carlos"),9,*agencia));
+//	Contas.push_back(new Conta(std::string("Arthur"),892,*agencia));
+//	Contas.push_back(new Conta(std::string("Carlos"),9,*agencia));
 
 //	Conta* p3 = new Conta(*c1, *agencia); //tentativa q deu erro la no Conta.hpp
 	
@@ -48,8 +47,8 @@ int main(int argc, char* argv[]){
 
 	while (menu.executa()); //vai ficar solicitando a opção até informar um numero invalido
 
-	std::cout << "Nome do CLIENTE: " << Clientes.at(0)->getNome() << std::endl;
-	std::cout << "CPF do CLIENTE: " << Clientes.at(0)->getCpf() << std::endl;
-	std::cout << "Numero de Clientes: " << Clientes.size() << std::endl;
+	//std::cout << "Nome do CLIENTE: " << Clientes.at(0)->getNome() << std::endl;
+	//std::cout << "CPF do CLIENTE: " << Clientes.at(0)->getCpf() << std::endl;
+	//std::cout << "Numero de Clientes: " << Clientes.size() << std::endl;
 
 }
