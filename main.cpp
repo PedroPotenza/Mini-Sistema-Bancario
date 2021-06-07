@@ -64,16 +64,16 @@ int main(int argc, char* argv[]){
 				agencia->showContas();
 				break;
 			case 2:
-				// code block
+				agencia->saldoCliente();
 				break;
 			case 3:
-				// code block
+				agencia->showExtrato();
 				break;
 			case 4:
-				// code block
+				agencia->transferencia();
 				break;
 			case 5:
-				// code block
+				agencia->getBalanco();
 				break;
 			case 6:
 				opcao = -1;
