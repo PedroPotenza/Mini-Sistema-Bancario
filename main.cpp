@@ -4,11 +4,6 @@
 #include "Conta.hpp"
 #include "Banco.hpp"
 
-//menu
-#include "menu/Menu.hpp"
-#include "menu/Menu.cpp"
-#include "menu/Itens.cpp"
-
 // fazer um arquivo com o inicializador de todas as variaveis statics
 int Conta::numeroContas(400); //eu quis que todos os ids das contas começassem a partir de 400 pra facilitar a visualizacao
 int Banco::numeroAgencias(0);
@@ -31,17 +26,6 @@ int main(int argc, char* argv[]){
 	agencia->adicionaConta(new Conta(std::string("Carlos"),9));
 	agencia->adicionaConta(new Conta(std::string("Arthur"),892));
 	agencia->adicionaConta(new Conta(std::string("Carlos"),9));
-
-//	Conta* p3 = new Conta(*c1, *agencia); //tentativa q deu erro la no Conta.hpp
-	
-	menu::Menu menu;
-	
-	menu.adiciona(new MenuListaClientes());
-	menu.adiciona(new MenuListaContas());
-	menu.adiciona(new MenuSaldoCliente());
-	menu.adiciona(new MenuExtratoCliente());
-	menu.adiciona(new MenuTransferencia());
-	menu.adiciona(new MenuSaldoTotal());
 
 
 	do {
