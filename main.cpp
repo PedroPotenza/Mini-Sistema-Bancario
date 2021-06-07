@@ -32,7 +32,6 @@ int main(int argc, char* argv[]){
 	agencia->adicionaConta(new Conta(std::string("Arthur"),892));
 	agencia->adicionaConta(new Conta(std::string("Carlos"),9));
 
-	agencia->showContas();
 //	Conta* p3 = new Conta(*c1, *agencia); //tentativa q deu erro la no Conta.hpp
 	
 	menu::Menu menu;
@@ -46,15 +45,43 @@ int main(int argc, char* argv[]){
 
 
 	do {
-		std::cout << "Escolha um item pelo numero:" << std::endl;
+		std::cout << std::endl << "Escolha um item pelo numero:" << std::endl;
 		std::cout << "(0) Lista de Clientes" << std::endl;
 		std::cout << "(1) Lista de Contas" << std::endl;
 		std::cout << "(2) Saldo" << std::endl;
 		std::cout << "(3) Extrato" << std::endl;
 		std::cout << "(4) Realizar Transferencia" << std::endl;
 		std::cout << "(5) Valor Total das Contas" << std::endl;
+		std::cout << "(6) Sair" << std::endl;
 
 		std::cin >> opcao;
+
+		switch(opcao) {
+			case 0:
+				agencia->showClientes();
+				break;
+			case 1:
+				agencia->showContas();
+				break;
+			case 2:
+				// code block
+				break;
+			case 3:
+				// code block
+				break;
+			case 4:
+				// code block
+				break;
+			case 5:
+				// code block
+				break;
+			case 6:
+				opcao = -1;
+				std::cout << "Saindo..." << std::endl;
+				break;
+			default:
+				std::cout << "Escolha uma opcao valida" << std::endl;
+		}
 
 	} while (opcao != -1);
 }
