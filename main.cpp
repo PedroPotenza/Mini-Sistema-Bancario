@@ -3,7 +3,7 @@
 
 #include "Conta.hpp"
 #include "Banco.hpp"
-
+//Teste
 // fazer um arquivo com o inicializador de todas as variaveis statics
 int Conta::numeroContas(400); //eu quis que todos os ids das contas começassem a partir de 400 pra facilitar a visualizacao
 int Banco::numeroAgencias(0);
