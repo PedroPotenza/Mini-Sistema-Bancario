@@ -1,5 +1,6 @@
 #include "MenuItem.hpp"
 #include "../Listas.cpp"
+#include "../Banco.hpp"
 
 #include <iostream>
 #include <vector>
