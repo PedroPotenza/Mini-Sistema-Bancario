@@ -60,17 +60,21 @@ void Banco::showExtrato(){
 
 void Banco::transferencia(){
 
-    int idpaga, idrecebe, valorpago, i;
+    int idpaga, valorpago,idrecebe, i;
     int balancoinicial, balancofinal;
+    float valorinformado;
 
     balancoinicial = this->calculaBalanco();
 
     std::cout << "Id da conta que envia: " ;
     std::cin >> idpaga;
-    std::cout << "Valor que deseja transferir: " ; //lembrando de não utilizar virgula no input ou transformar valorpago em float e multiplicar por 100
-    std::cin >> valorpago;
+    std::cout << "Valor que deseja transferir: "; 
+    std::cin >> valorinformado;
     std::cout << "Id da conta de quem recebe: " ;
     std::cin >> idrecebe;
+
+    valorinformado = valorinformado * 100;
+    valorpago = (int)valorinformado;
 
     //fazer o tratamento de erro:
     //--> se informado um valor alem do q tem na conta
