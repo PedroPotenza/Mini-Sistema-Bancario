@@ -56,7 +56,7 @@ int main(int argc, char* argv[]){
 				agencia->transferencia();
 				break;
 			case 5:
-				std::cout << "Balanco do Banco: " << std::setprecision(2) << std::fixed << ((float)agencia->calculaBalanco()) << std::endl;
+				std::cout << "Balanco do Banco: " << std::setprecision(2) << std::fixed << ((float)agencia->calculaBalanco())/100 << std::endl;
 				break;
 			case 6:
 				opcao = -1;

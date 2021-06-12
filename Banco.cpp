@@ -50,9 +50,9 @@ void Banco::showExtrato(){
         if(idlocal == Contas.at(i)->getId()){
             for(j=0; j < Contas.at(i)->getTamExtrato(); j++){
                 if(Contas.at(i)->getExtrato(j) > 0)
-                    std::cout << "+" << std::setprecision(2) << std::fixed  << ((float)Contas.at(i)->getExtrato(j)) << std::endl;
+                    std::cout << "+" << std::setprecision(2) << std::fixed  << ((float)Contas.at(i)->getExtrato(j))/100 << std::endl;
                 else
-                    std::cout << std::setprecision(2) << std::fixed << ((float)Contas.at(i)->getExtrato(j)) << std::endl;
+                    std::cout << std::setprecision(2) << std::fixed << ((float)Contas.at(i)->getExtrato(j))/100 << std::endl;
             }
         }
     }
