@@ -15,7 +15,7 @@
       std::vector<Conta*> Contas;
 
     public:
-      inline int getBalanco() const;
+      inline int calculaBalanco();
       inline void setBalanco(int valor);
       inline void adicionaCliente(Cliente* cliente);
       inline void adicionaConta(Conta* conta);
@@ -27,7 +27,6 @@
 
       Banco() : id(Banco::getNumeroAgencias())
       {
-
       }
 
       int getNumeroAgencias(){
@@ -35,9 +34,19 @@
       }
   };
 
-  inline int Banco::getBalanco() const
+  inline int Banco::calculaBalanco()
   {
-    return(this->balanco);
+    if(this->Contas.empty()){
+      return 0;
+    } else {
+        int balancolocal=0 , i;
+
+        for(i=0; i < this->Contas.size(); i++){
+          balancolocal = balancolocal + Contas.at(i)->getSaldo();
+        }
+        return(balancolocal);
+    }
+
   }
 
   inline void Banco::setBalanco(int valor)

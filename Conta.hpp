@@ -25,13 +25,6 @@
 					setExtrato(100000);
 					//poderia aproveitar aqui e passar o id_agencia do objeto agencia
 				}
-			
-		/*	Conta(Cliente& cliente, Banco& agencia) :
-				id(Conta::getNumeroContas()), saldo(1000){ //erro nessa chave ("não existe construtor padrão para a classe Cliente")
-					this->setNome(cliente.getNome());
-					this->setCpf(cliente.getCpf());
-					agencia.setBalanco(saldo);
-				} */
 
 			int getNumeroContas(){
 				return(++ numeroContas);
