@@ -22,8 +22,8 @@ O/a operador(a) do sistema (não precisa ser identificado(a)) usa menus de texto
 Nestes menus, ele(a) pode selecionar a operação:
 1. Lista clientes;
 2. Lista contas;
-3. Saldo do cliente;
-4. Extrato do cliente;
+3. Saldo do cliente (ou da conta);
+4. Extrato do cliente (ou da conta);
 5. Realizar transferência;
 6. Mostrar valores totais de todas as contas.
 As contas começam já com valores padrão, exemplo, 1000 reais para cada cliente.
@@ -53,4 +53,4 @@ Linguagem: C++ 2003.
 - Tirem suas dúvidas.
 
 ## Créditos
-Esse exercício/trabalho foi desenvolvido pelo professor _Tiago Gottardi_ na disciplina _"Programação orientada a Objeto"_ ministrado para a turma do periodo nortuno. (EMA9752/EMA9721-Comp-Not-2021) 
+Esse exercício/trabalho foi desenvolvido pelo professor _Tiago Gottardi_ na disciplina _"Programação orientada a Objeto"_ ministrado para a turma do periodo nortuno no terceiro semestre da graduação. (EMA9752/EMA9721-Comp-Not-2021) 
