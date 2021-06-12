@@ -10,6 +10,19 @@ int Conta::numeroContas(400); //eu quis que todos os ids das contas começassem 
 int Banco::numeroAgencias(0);
 int Banco::balanco(0);
 
+void clear()	//funcao encontrada na internet para poder dar o comando cls em todos os sistemas operacionais
+{				//sou usuario de windows 10 apenas, por isso dependi de uma funcao da internet para limpar a tela no lixus e IOS.
+	#if defined _WIN32
+	    system("cls");
+	    //clrscr(); // including header file : conio.h
+	#elif defined (__LINUX__) || defined(__gnu_linux__) || defined(__linux__)
+	    system("clear");
+	    //std::cout<< u8"\033[2J\033[1;1H"; //Using ANSI Escape Sequences 
+	#elif defined (__APPLE__)
+	    system("clear");
+	#endif
+}
+
 int main(int argc, char* argv[]){
 
 	Banco* agencia = new Banco();
@@ -38,7 +51,8 @@ int main(int argc, char* argv[]){
 		std::cout << "(6) Sair" << std::endl;
 
 		std::cin >> opcao;
-
+		clear();
+		
 		switch(opcao) {
 			case 0:
 				agencia->showClientes();
