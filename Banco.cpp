@@ -1,5 +1,6 @@
 #include <vector>   
 #include <iostream> 
+#include <iomanip>
 #include "Banco.hpp"
 #include "Cliente.hpp"
 #include "Conta.hpp"
@@ -20,7 +21,7 @@ void Banco::showContas(){
         std::cout << "-------Conta "<< Contas.at(i)->getId() << "--------\n" << std::endl;
         std::cout << "Nome do Titular da Conta: " << Contas.at(i)->getNome() << std::endl;
         std::cout << "CPF do Titular da Conta: " << Contas.at(i)->getCpf() << "\n"<<  std::endl;
-        std::cout << "Saldo da Conta: " << Contas.at(i)->getSaldo() / 100 << "\n"<<  std::endl;
+        std::cout << "Saldo da Conta: " << std::setprecision(2) << std::fixed << ((float)Contas.at(i)->getSaldo()) / 100 << "\n"<<  std::endl;
     }
 }
 
@@ -36,7 +37,7 @@ void Banco::saldoCliente(){
         }
     }
 
-    std::cout << "Saldo do cliente: " << saldolocal << std::endl;
+    std::cout << "Saldo do cliente: " << std::setprecision(2) << std::fixed << ((float)saldolocal)/100 << std::endl;
 }
 
 void Banco::showExtrato(){
@@ -49,9 +50,9 @@ void Banco::showExtrato(){
         if(idlocal == Contas.at(i)->getId()){
             for(j=0; j < Contas.at(i)->getTamExtrato(); j++){
                 if(Contas.at(i)->getExtrato(j) > 0)
-                    std::cout << "+" << Contas.at(i)->getExtrato(j) << std::endl;
+                    std::cout << "+" << std::setprecision(2) << std::fixed  << ((float)Contas.at(i)->getExtrato(j)) << std::endl;
                 else
-                    std::cout << Contas.at(i)->getExtrato(j) << std::endl;
+                    std::cout << std::setprecision(2) << std::fixed << ((float)Contas.at(i)->getExtrato(j)) << std::endl;
             }
         }
     }
@@ -66,7 +67,7 @@ void Banco::transferencia(){
 
     std::cout << "Id da conta que envia: " ;
     std::cin >> idpaga;
-    std::cout << "Valor que deseja transferir: " ; //lembrando de não utilizar virgula no input
+    std::cout << "Valor que deseja transferir: " ; //lembrando de não utilizar virgula no input ou transformar valorpago em float e multiplicar por 100
     std::cin >> valorpago;
     std::cout << "Id da conta de quem recebe: " ;
     std::cin >> idrecebe;
