@@ -48,7 +48,10 @@ void Banco::showExtrato(){
     for(i=0; i < Contas.size();i++){
         if(idlocal == Contas.at(i)->getId()){
             for(j=0; j < Contas.at(i)->getTamExtrato(); j++){
-                std::cout << Contas.at(i)->getExtrato(j) << std::endl;
+                if(Contas.at(i)->getExtrato(j) > 0)
+                    std::cout << "+" << Contas.at(i)->getExtrato(j) << std::endl;
+                else
+                    std::cout << Contas.at(i)->getExtrato(j) << std::endl;
             }
         }
     }
@@ -57,10 +60,13 @@ void Banco::showExtrato(){
 void Banco::transferencia(){
 
     int idpaga, idrecebe, valorpago, i;
+    int balancoinicial, balancofinal;
+
+    balancoinicial = this->calculaBalanco();
 
     std::cout << "Id da conta que envia: " ;
     std::cin >> idpaga;
-    std::cout << "Valor que deseja transferir: " ; //lembrando de não utilizar virgula
+    std::cout << "Valor que deseja transferir: " ; //lembrando de não utilizar virgula no input
     std::cin >> valorpago;
     std::cout << "Id da conta de quem recebe: " ;
     std::cin >> idrecebe;
@@ -70,20 +76,29 @@ void Banco::transferencia(){
     //--> informou id inexistente
     //--> verificar o balanco
 
-    for(i=0; i < Contas.size();i++){
-        if(idpaga == Contas.at(i)->getId()){
-            Contas.at(i)->setSaldo(Contas.at(i)->getSaldo()-valorpago);
-            Contas.at(i)->setExtrato(-valorpago);
+    for(i=0; i < this->Contas.size();i++){
+        if(idpaga == this->Contas.at(i)->getId()){
+            this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()-valorpago);
+            this->Contas.at(i)->setExtrato(-valorpago);
         }
-        if(idrecebe == Contas.at(i)->getId()){
-            Contas.at(i)->setSaldo(Contas.at(i)->getSaldo()+valorpago);
-            Contas.at(i)->setExtrato(+valorpago);
+        if(idrecebe == this->Contas.at(i)->getId()){
+            this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()+valorpago);
+            this->Contas.at(i)->setExtrato(+valorpago);
         }
     }
+
+    balancofinal = this->calculaBalanco();
+    //Balanco Inicial e o Balanco Final TEM que ser iguais.
+    
+
+    //eu poderia evitar utilizar estruturas de repetição para localizar o id das contas pois elas são facilmente
+    //deduzidas (comecam nos 400 e terminam no 400+numero de contas), porem optei por deixar com os for para que
+    //meu código ficasse mais genérico e reutilizavel em um cenario onde é possivel uma conta ser deletada por exemplo
+    //o que causaria uma mudança na ordem de ids.
+    //(404 foi deletado, mas isso não torna o 405 em 404 por exemplo)
+
 }
 
-//eu poderia evitar utilizar estruturas de repetição para localizar o id das contas pois elas são facilmente
-//deduzidas (comecam nos 400 e terminam no 400+numero de contas), porem optei por deixar com os for para que
-//meu código ficasse mais genérico e reutilizavel em um cenario onde é possivel uma conta ser deletada por exemplo
-//o que causaria uma mudança na ordem de ids.
-//(404 foi deletado, mas isso não torna o 405 em 404 por exemplo)
+    
+
+

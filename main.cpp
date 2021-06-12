@@ -21,7 +21,6 @@ int main(int argc, char* argv[]){
 	agencia->adicionaCliente(new Cliente(std::string("Klaus"),497));
 	agencia->adicionaCliente(new Cliente(std::string("Patricia"),576));
 
-//	std::vector<Conta*> Contas; (vector criado no Listas.cpp)
 	agencia->adicionaConta(new Conta(std::string("Arthur"),892));
 	agencia->adicionaConta(new Conta(std::string("Clovis"),7));
 	agencia->adicionaConta(new Conta(std::string("Carlos"),9));
