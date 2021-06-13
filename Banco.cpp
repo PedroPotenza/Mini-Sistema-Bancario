@@ -86,9 +86,9 @@ void Banco::showExtrato(){
         throw userNotFOundException();
 }
 
-void Banco::transferencia(){
+void Banco::transferencia(){ //ainda com o erro grave do balanco
 
-    int idpaga, valorpago,idrecebe, i, encontrou;
+    int idpaga, valorpago,idrecebe, i, encontroupaga=0, encontrourecebe=0;
     int balancoinicial, balancofinal;
     float valorinformado;
 
@@ -106,7 +106,7 @@ void Banco::transferencia(){
 
     for(i=0; i < this->Contas.size();i++){
         if(idpaga == this->Contas.at(i)->getId()){
-            encontrou = 1;
+            encontroupaga = 1;
             if(Contas.at(i)->getSaldo() < valorpago){
                 throw lowBalanceException();
             } else {
@@ -115,19 +115,19 @@ void Banco::transferencia(){
             }
         }
         
-        if(encontrou != 1){
-            throw userNotFOundException();
-        } else {
-            if(idrecebe == this->Contas.at(i)->getId()){
-                encontrou = 2;
-                this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()+valorpago);
-                this->Contas.at(i)->setExtrato(+valorpago);
+        if(idrecebe == this->Contas.at(i)->getId()){
+            encontrourecebe = 2;
+            this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()+valorpago);
+            this->Contas.at(i)->setExtrato(+valorpago);
             }
+            
+    }
 
-            if(encontrou != 2){
-                throw userNotFOundException();
-            }
-        }
+    if(encontroupaga != 1){
+        throw userNotFOundException();
+    }
+    if(encontrourecebe != 2){
+        throw userNotFOundException();
     }
 
     balancofinal = this->calculaBalanco();
