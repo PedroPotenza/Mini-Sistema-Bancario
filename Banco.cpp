@@ -78,9 +78,7 @@ void Banco::transferencia(){
     valorpago = (int)valorinformado;
 
     //fazer o tratamento de erro:
-    //--> se informado um valor alem do q tem na conta
     //--> informou id inexistente
-    //--> verificar o balanco
 
     for(i=0; i < this->Contas.size();i++){
         if(idpaga == this->Contas.at(i)->getId()){
