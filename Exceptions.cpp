@@ -9,6 +9,12 @@ class userNotFOundException: public exception {
     }
 };
 
+class accountNotFOundException: public exception {
+    virtual const char* what() const throw() {
+        return "Conta não encontrada.";
+    }
+};
+
 class wrongBalanceException: public exception {
     virtual const char* what() const throw() {
         return "O Balanco total do banco foi adulterado.";

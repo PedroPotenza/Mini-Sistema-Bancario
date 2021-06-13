@@ -45,6 +45,25 @@ void Banco::saldoCliente(){
     }
 }
 
+void Banco::saldoConta(){
+    int idlocal, saldolocal(0), i, encontrou;
+
+    std::cout << "Id da Conta desejada: " ;
+    std::cin >> idlocal;
+
+    for(i=0; i < Contas.size(); i++){
+        if(idlocal == Contas.at(i)->getId()){
+            encontrou = 1;
+            saldolocal = saldolocal + Contas.at(i)->getSaldo();
+        }
+    }
+    if(encontrou == 1) {
+        std::cout << "Saldo da conta: " << std::setprecision(2) << std::fixed << ((float)saldolocal)/100 << std::endl;
+    } else {
+        throw accountNotFOundException();
+    }
+}
+
 void Banco::showExtrato(){
     int i, idlocal, j, encontrou;
     

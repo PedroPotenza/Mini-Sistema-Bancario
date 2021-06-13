@@ -22,6 +22,7 @@
       void showClientes();
       void showContas();
       void saldoCliente();
+      void saldoConta();
       void showExtrato();
       void transferencia();
 

@@ -22,7 +22,7 @@ void clear()	//funcao encontrada na internet para poder dar o comando cls em tod
 int main(int argc, char* argv[]){
 
 	Banco* agencia = new Banco();
-	int opcao = 0;
+	int opcao = 0, subOpcao = 0;
 
 	agencia->adicionaCliente(new Cliente(std::string("Arthur"),892));
 	agencia->adicionaCliente(new Cliente(std::string("Clovis"),7));
@@ -57,11 +57,26 @@ int main(int argc, char* argv[]){
 				agencia->showContas();
 				break;
 			case 2:
-				try {
-					agencia->saldoCliente();
-				} catch (exception& e) {
-					cout << e.what() << '\n';
+				std::cout << "(1) Saldo de cliente" << std::endl;
+				std::cout << "(2) Saldo de conta" << std::endl;
+
+				std::cin >> subOpcao;
+				if(subOpcao == 1){
+					try {
+						agencia->saldoCliente();
+					} catch (exception& e) {
+						cout << e.what() << '\n';
+					}
+				} else if (subOpcao == 2) {
+					try {
+						agencia->saldoConta();
+					} catch (exception& e) {
+						cout << e.what() << '\n';
+					}
+				} else {
+					std::cout << "Opcao inválida" << std::endl;
 				}
+				
 				break;
 			case 3:
 				try {
