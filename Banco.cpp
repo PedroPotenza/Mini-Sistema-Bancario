@@ -99,8 +99,18 @@ void Banco::transferencia(){
     balancofinal = this->calculaBalanco();
 
     if( !(balancoinicial == balancofinal) ) {
+        for(i=0; i < this->Contas.size();i++){
+            if(idpaga == this->Contas.at(i)->getId()){
+                this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()+valorpago);
+                this->Contas.at(i)->setExtrato(+valorpago);
+            }
+            if(idrecebe == this->Contas.at(i)->getId()){
+                this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()-valorpago);
+                this->Contas.at(i)->setExtrato(-valorpago);
+            }
+        }
         throw wrongBalanceException();
-    }    
+    }     
 
     //eu poderia evitar utilizar estruturas de repetição para localizar o id das contas pois elas são facilmente
     //deduzidas (comecam nos 400 e terminam no 400+numero de contas), porem optei por deixar com os for para que

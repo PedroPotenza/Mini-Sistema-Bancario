@@ -65,7 +65,11 @@ int main(int argc, char* argv[]){
 				agencia->showExtrato();
 				break;
 			case 4:
-				agencia->transferencia();
+				try {
+					agencia->transferencia();
+				} catch (exception& e) {
+					cout << e.what() << '\n';
+				}
 				break;
 			case 5:
 				std::cout << "Balanco do Banco: " << std::setprecision(2) << std::fixed << ((float)agencia->calculaBalanco())/100 << std::endl;
