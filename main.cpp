@@ -102,6 +102,7 @@ int main(int argc, char* argv[]){
 			default:
 				std::cout << "Escolha uma opcao valida" << std::endl;
 		}
-
 	} while (opcao != -1);
+
+	agencia->destructBanco();
 }

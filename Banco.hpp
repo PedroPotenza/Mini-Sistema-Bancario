@@ -19,6 +19,7 @@
       inline void setBalanco(int valor);
       inline void adicionaCliente(Cliente* cliente);
       inline void adicionaConta(Conta* conta);
+      inline void destructBanco();
       void showClientes();
       void showContas();
       void saldoCliente();
@@ -63,5 +64,15 @@
   inline void Banco::adicionaConta(Conta* conta)
   {
     this->Contas.push_back(conta);
+  }
+
+  inline void Banco::destructBanco(){
+    for(int i=0; i < Contas.size(); i++){
+      delete(Contas.at(i));
+    }
+
+    for(int i=0; i < Clientes.size(); i++){
+      delete(Clientes.at(i));
+    }
   }
 #endif
