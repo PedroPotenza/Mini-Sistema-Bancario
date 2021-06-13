@@ -61,7 +61,7 @@ void Banco::showExtrato(){
 
 void Banco::transferencia(){
 
-    int idpaga, valorpago,idrecebe, i;
+    int idpaga, valorpago,idrecebe, i, encontrou;
     int balancoinicial, balancofinal;
     float valorinformado;
 
@@ -82,6 +82,7 @@ void Banco::transferencia(){
 
     for(i=0; i < this->Contas.size();i++){
         if(idpaga == this->Contas.at(i)->getId()){
+            encontrou = 1;
             if(Contas.at(i)->getSaldo() < valorpago){
                 throw lowBalanceException();
             } else {
@@ -89,10 +90,19 @@ void Banco::transferencia(){
                 this->Contas.at(i)->setExtrato(-valorpago);
             }
         }
+        
+        if(encontrou != 1){
+            throw userNotFOundException();
+        } else {
+            if(idrecebe == this->Contas.at(i)->getId()){
+                encontrou = 2;
+                this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()+valorpago);
+                this->Contas.at(i)->setExtrato(+valorpago);
+            }
 
-        if(idrecebe == this->Contas.at(i)->getId()){
-            this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()+valorpago);
-            this->Contas.at(i)->setExtrato(+valorpago);
+            if(encontrou != 2){
+                throw userNotFOundException();
+            }
         }
     }
 
