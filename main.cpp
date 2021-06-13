@@ -14,10 +14,8 @@ void clear()	//funcao encontrada na internet para poder dar o comando cls em tod
 {				//sou usuario de windows 10 apenas, por isso dependi de uma funcao da internet para limpar a tela no lixus e IOS.
 	#if defined _WIN32
 	    system("cls");
-	    //clrscr(); // including header file : conio.h
 	#elif defined (__LINUX__) || defined(__gnu_linux__) || defined(__linux__) || defined (__APPLE__)
 	    system("clear");
-	    //std::cout<< u8"\033[2J\033[1;1H"; //Using ANSI Escape Sequences 
 	#endif
 }
 
