@@ -77,9 +77,6 @@ void Banco::transferencia(){
     valorinformado = valorinformado * 100;
     valorpago = (int)valorinformado;
 
-    //fazer o tratamento de erro:
-    //--> informou id inexistente
-
     for(i=0; i < this->Contas.size();i++){
         if(idpaga == this->Contas.at(i)->getId()){
             encontrou = 1;
