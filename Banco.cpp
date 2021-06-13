@@ -4,6 +4,7 @@
 #include "Banco.hpp"
 #include "Cliente.hpp"
 #include "Conta.hpp"
+#include "Exceptions.cpp"
 
 void Banco::showClientes(){
     int i;
@@ -83,9 +84,14 @@ void Banco::transferencia(){
 
     for(i=0; i < this->Contas.size();i++){
         if(idpaga == this->Contas.at(i)->getId()){
-            this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()-valorpago);
-            this->Contas.at(i)->setExtrato(-valorpago);
+            if(Contas.at(i)->getSaldo() < valorpago){
+                throw lowBalanceException();
+            } else {
+                this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()-valorpago);
+                this->Contas.at(i)->setExtrato(-valorpago);
+            }
         }
+
         if(idrecebe == this->Contas.at(i)->getId()){
             this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()+valorpago);
             this->Contas.at(i)->setExtrato(+valorpago);
@@ -93,8 +99,10 @@ void Banco::transferencia(){
     }
 
     balancofinal = this->calculaBalanco();
-    //Balanco Inicial e o Balanco Final TEM que ser iguais.
-    
+
+    if( !(balancoinicial == balancofinal) ) {
+        throw wrongBalanceException();
+    }    
 
     //eu poderia evitar utilizar estruturas de repetição para localizar o id das contas pois elas são facilmente
     //deduzidas (comecam nos 400 e terminam no 400+numero de contas), porem optei por deixar com os for para que
