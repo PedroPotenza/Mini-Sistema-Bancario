@@ -36,12 +36,12 @@
 
   inline int Banco::calculaBalanco()
   {
-    if(this->Contas.empty()){
+    if (this->Contas.empty()) {
       return 0;
     } else {
         int balancolocal=0 , i;
 
-        for(i=0; i < this->Contas.size(); i++){
+        for (i=0; i < this->Contas.size(); i++) {
           balancolocal = balancolocal + Contas.at(i)->getSaldo();
         }
         return(balancolocal);

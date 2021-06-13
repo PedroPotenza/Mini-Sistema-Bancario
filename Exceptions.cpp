@@ -2,6 +2,7 @@
 #include <exception>
 
 using namespace std;
+
 class userNotFOundException: public exception {
     virtual const char* what() const throw() {
         return "Usuário não encontrado.";

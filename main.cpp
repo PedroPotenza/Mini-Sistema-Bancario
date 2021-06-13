@@ -57,10 +57,18 @@ int main(int argc, char* argv[]){
 				agencia->showContas();
 				break;
 			case 2:
-				agencia->saldoCliente();
+				try {
+					agencia->saldoCliente();
+				} catch (exception& e) {
+					cout << e.what() << '\n';
+				}
 				break;
 			case 3:
-				agencia->showExtrato();
+				try {
+					agencia->showExtrato();
+				} catch (exception& e) {
+					cout << e.what() << '\n';
+				}
 				break;
 			case 4:
 				try {

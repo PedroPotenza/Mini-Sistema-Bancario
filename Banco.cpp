@@ -27,29 +27,34 @@ void Banco::showContas(){
 }
 
 void Banco::saldoCliente(){
-    int cpflocal, saldolocal(0), i;
+    int cpflocal, saldolocal(0), i, encontrou;
 
     std::cout << "CPF do Cliente desejado: " ;
     std::cin >> cpflocal;
 
     for(i=0; i < Contas.size(); i++){
         if(cpflocal == Contas.at(i)->getCpf()){
+            encontrou = 1;
             saldolocal = saldolocal + Contas.at(i)->getSaldo();
         }
     }
-
-    std::cout << "Saldo do cliente: " << std::setprecision(2) << std::fixed << ((float)saldolocal)/100 << std::endl;
+    if(encontrou == 1) {
+        std::cout << "Saldo do cliente: " << std::setprecision(2) << std::fixed << ((float)saldolocal)/100 << std::endl;
+    } else {
+        throw userNotFOundException();
+    }
 }
 
 void Banco::showExtrato(){
-    int i, idlocal, j;
+    int i, idlocal, j, encontrou;
     
     std::cout << "Id da conta: ";
     std::cin >> idlocal;
 
     for(i=0; i < Contas.size();i++){
         if(idlocal == Contas.at(i)->getId()){
-            for(j=0; j < Contas.at(i)->getTamExtrato(); j++){
+            encontrou = 1;
+            for(j=0; j < Contas.at(i)->getTamExtrato(); j++){    
                 if(Contas.at(i)->getExtrato(j) > 0)
                     std::cout << "+" << std::setprecision(2) << std::fixed  << ((float)Contas.at(i)->getExtrato(j))/100 << std::endl;
                 else
@@ -57,6 +62,9 @@ void Banco::showExtrato(){
             }
         }
     }
+
+    if (!(encontrou == 1))
+        throw userNotFOundException();
 }
 
 void Banco::transferencia(){
