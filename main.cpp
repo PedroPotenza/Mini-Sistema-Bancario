@@ -74,7 +74,7 @@ int main(int argc, char* argv[]){
 						cout << e.what() << '\n';
 					}
 				} else {
-					std::cout << "Opcao inválida" << std::endl;
+					std::cout << "Opcao invalida" << std::endl;
 				}
 				
 				break;
