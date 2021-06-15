@@ -5,13 +5,13 @@ using namespace std;
 
 class userNotFOundException: public exception {
     virtual const char* what() const throw() {
-        return "Usuário não encontrado.";
+        return "Usuario nao encontrado.";
     }
 };
 
 class accountNotFOundException: public exception {
     virtual const char* what() const throw() {
-        return "Conta não encontrada.";
+        return "Conta nao encontrada.";
     }
 };
 
@@ -23,6 +23,6 @@ class wrongBalanceException: public exception {
 
 class lowBalanceException: public exception {
     virtual const char* what() const throw() {
-        return "O saldo do cliente é menor que o valor informado.";
+        return "O saldo do cliente e menor que o valor informado.";
     }
 };
