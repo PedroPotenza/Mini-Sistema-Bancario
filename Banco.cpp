@@ -124,9 +124,23 @@ void Banco::transferencia(){ //ainda com o erro grave do balanco
     }
 
     if(encontroupaga != 1){
+        for(i=0; i < this->Contas.size();i++){
+            if(idrecebe == this->Contas.at(i)->getId()){
+                this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()-valorpago);
+                this->Contas.at(i)->setExtrato(-valorpago);
+            }
+        }
         throw userNotFOundException();
     }
+
     if(encontrourecebe != 2){
+        for(i=0; i < this->Contas.size();i++){
+            if(idpaga == this->Contas.at(i)->getId()){
+                this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()+valorpago);
+                this->Contas.at(i)->setExtrato(+valorpago);
+            }
+        }
+
         throw userNotFOundException();
     }
 
