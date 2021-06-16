@@ -4,14 +4,13 @@
 #include "Conta.hpp"
 #include "Banco.hpp"
 #include "Banco.cpp"
-//Teste
-// fazer um arquivo com o inicializador de todas as variaveis statics
-int Conta::numeroContas(400); //eu quis que todos os ids das contas começassem a partir de 400 pra facilitar a visualizacao
+
+int Conta::numeroContas(400); // Inicializacao dos ID's em 400 para maior facilidade na visualizacao
 int Banco::numeroAgencias(0);
 int Banco::balanco(0);
 
-void clear()	//funcao encontrada na internet para poder dar o comando cls em todos os sistemas operacionais
-{				//sou usuario de windows 10 apenas, por isso dependi de uma funcao da internet para limpar a tela no lixus e IOS.
+void clear()	// Funcao utilizada para limpar a tela em todos os sistemas operacionais
+{
 	#if defined _WIN32
 	    system("cls");
 	#elif defined (__LINUX__) || defined(__gnu_linux__) || defined(__linux__) || defined (__APPLE__)
