@@ -230,8 +230,3 @@ void Banco::transferencia(){
     //(404 foi deletado, mas isso não torna o 405 em 404 por exemplo)
 
 }
-
- 
-
-
-
