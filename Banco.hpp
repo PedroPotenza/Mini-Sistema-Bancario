@@ -45,7 +45,7 @@
     } else {
         int balancolocal=0 , i;
 
-        for (i=0; i < this->Contas.size(); i++) {
+        for (i=0; i < this->Contas.size(); i++) { // Percorre contas para calcular o balanco
           balancolocal = balancolocal + Contas.at(i)->getSaldo();
         }
         return(balancolocal);
@@ -68,7 +68,7 @@
     this->Contas.push_back(conta);
   }
 
-  inline void Banco::destructBanco(){
+  inline void Banco::destructBanco(){ // Deleta todos os elementos dos vetores relacionados a banco
     for(int i=0; i < Contas.size(); i++){
       delete(Contas.at(i));
     }
