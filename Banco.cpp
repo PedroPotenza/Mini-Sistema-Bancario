@@ -19,7 +19,7 @@ void Banco::showClientes(){
 void Banco::showContas(){
     int i;
     for(i=0; i < Contas.size(); i++){
-        std::cout << "-------Conta "<< Contas.at(i)->getId() << "--------\n" << std::endl;
+        std::cout << "-------Conta "<< Contas.at(i)->getId() << "--------" << std::endl;
         std::cout << "Nome do Titular da Conta: " << Contas.at(i)->getNome() << std::endl;
         std::cout << "CPF do Titular da Conta: " << Contas.at(i)->getCpf() << "\n"<<  std::endl;
         std::cout << "Saldo da Conta: " << std::setprecision(2) << std::fixed << ((float)Contas.at(i)->getSaldo()) / 100 << "\n"<<  std::endl;
