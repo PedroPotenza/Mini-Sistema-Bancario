@@ -10,8 +10,7 @@
 			int id;
 			int	saldo;
 			std::vector<int> Extrato;
-			//poderia implementar tambem um int id_agencia para  saber a qual agencia essa conta pertence, 
-			//mas n vou adicionar para n complicar
+
 		public:
 			inline int getSaldo() const;
 			inline void setSaldo(int x);
