@@ -24,20 +24,24 @@ int main(int argc, char* argv[]){
 	Banco* agencia = new Banco();
 	int opcao = 0, subOpcao = 0;
 
-	agencia->adicionaCliente(new Cliente(std::string("Pedro Potenza"),12345671));
-	agencia->adicionaCliente(new Cliente(std::string("Gabriel Tetzlaf"),12345672));
-	agencia->adicionaCliente(new Cliente(std::string("Thiago Gottardi"),12345673));
-	agencia->adicionaCliente(new Cliente(std::string("Claudia Soares"),12345674));
-	agencia->adicionaCliente(new Cliente(std::string("Maria Antonieta"),12345675));
+	// Inicializacao dos clientes do banco
+	agencia->adicionaCliente(new Cliente(std::string("Pedro Potenza"), 12345671));
+	agencia->adicionaCliente(new Cliente(std::string("Gabriel Tetzlaf"), 12345672));
+	agencia->adicionaCliente(new Cliente(std::string("Thiago Gottardi"), 12345673));
+	agencia->adicionaCliente(new Cliente(std::string("Claudia Soares"), 12345674));
+	agencia->adicionaCliente(new Cliente(std::string("Maria Antonieta"), 12345675));
 
-	agencia->adicionaConta(new Conta(std::string("Pedro Potenza"),12345671));
-	agencia->adicionaConta(new Conta(std::string("Gabriel Tetzlaf"),12345672));
-	agencia->adicionaConta(new Conta(std::string("Thiago Gottardi"),12345673)); 
-	agencia->adicionaConta(new Conta(std::string("Claudia Soares"),12345674));
-	agencia->adicionaConta(new Conta(std::string("Maria Antonieta"),12345675));
+	// Inicializacao das contas dos clientes
+	agencia->adicionaConta(new Conta(std::string("Pedro Potenza"), 12345671));
+	agencia->adicionaConta(new Conta(std::string("Gabriel Tetzlaf"), 12345672));
+	agencia->adicionaConta(new Conta(std::string("Thiago Gottardi"), 12345673)); 
+	agencia->adicionaConta(new Conta(std::string("Claudia Soares"), 12345674));
+	agencia->adicionaConta(new Conta(std::string("Maria Antonieta"), 12345675));
 
+	// Inicializa extrato do cliente
 	agencia->ExtratoClienteStart();
 
+	// Menu de opcoes disponiveis
 	do {
 		std::cout << std::endl << "Escolha um item pelo numero:" << std::endl;
 		std::cout << "(0) Lista de Clientes" << std::endl;
@@ -121,5 +125,6 @@ int main(int argc, char* argv[]){
 		}
 	} while (opcao != -1);
 
+	// Invocando Destrutor de Banco
 	agencia->destructBanco();
 }
