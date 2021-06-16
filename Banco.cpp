@@ -64,7 +64,46 @@ void Banco::saldoConta(){
     }
 }
 
-void Banco::showExtrato(){
+void Banco::ExtratoClienteStart(){
+
+    int i, j, numContas;
+    for(i=0; i < Clientes.size();i++){ 
+        for(j=0; j < Contas.size();j++){
+            if(Clientes.at(i)->getCpf() == Contas.at(j)->getCpf())
+                numContas++;
+        }
+
+        for(j=0; j < numContas; j++)
+            Clientes.at(i)->setExtrato(100000);
+        numContas=0;
+    }
+
+}
+
+
+void Banco::showExtratoCliente(){
+    int i, cpflocal, j, encontrou;
+    
+    std::cout << "CPF do cliente: ";
+    std::cin >> cpflocal;
+
+    for(i=0; i < Clientes.size();i++){ 
+        if(cpflocal == Clientes.at(i)->getCpf()){
+            encontrou = 1;
+            for(j=0; j < Clientes.at(i)->getTamExtrato(); j++){  
+                if(Clientes.at(i)->getExtrato(j) > 0)
+                    std::cout << "+" << std::setprecision(2) << std::fixed  << ((float)Clientes.at(i)->getExtrato(j))/100 << std::endl;
+                else
+                    std::cout << std::setprecision(2) << std::fixed << ((float)Clientes.at(i)->getExtrato(j))/100 << std::endl;
+            }
+        }
+    }
+
+    if (!(encontrou == 1))
+        throw userNotFOundException();
+}
+
+void Banco::showExtratoConta(){
     int i, idlocal, j, encontrou;
     
     std::cout << "Id da conta: ";
@@ -83,12 +122,12 @@ void Banco::showExtrato(){
     }
 
     if (!(encontrou == 1))
-        throw userNotFOundException();
+        throw accountNotFOundException();
 }
 
-void Banco::transferencia(){ //ainda com o erro grave do balanco
+void Banco::transferencia(){ 
 
-    int idpaga, valorpago,idrecebe, i, encontroupaga=0, encontrourecebe=0;
+    int idpaga, valorpago,idrecebe, i, encontroupaga=0, encontrourecebe=0,j;
     int balancoinicial, balancofinal;
     float valorinformado;
 
@@ -112,6 +151,10 @@ void Banco::transferencia(){ //ainda com o erro grave do balanco
             } else {
                 this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()-valorpago);
                 this->Contas.at(i)->setExtrato(-valorpago);
+                for(j=0; j < Clientes.size();j++){ 
+                      if(this->Contas.at(i)->getCpf() == this->Clientes.at(j)->getCpf())
+                      this->Clientes.at(j)->setExtrato(-valorpago);
+                }
             }
         }
         
@@ -119,6 +162,10 @@ void Banco::transferencia(){ //ainda com o erro grave do balanco
             encontrourecebe = 2;
             this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()+valorpago);
             this->Contas.at(i)->setExtrato(+valorpago);
+            for(j=0; j < Clientes.size();j++){ 
+                      if(this->Contas.at(i)->getCpf() == this->Clientes.at(j)->getCpf())
+                      this->Clientes.at(j)->setExtrato(+valorpago);
+                }
             }
             
     }
@@ -128,6 +175,10 @@ void Banco::transferencia(){ //ainda com o erro grave do balanco
             if(idrecebe == this->Contas.at(i)->getId()){
                 this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()-valorpago);
                 this->Contas.at(i)->setExtrato(-valorpago);
+                for(j=0; j < Clientes.size();j++){ 
+                      if(this->Contas.at(i)->getCpf() == this->Clientes.at(j)->getCpf())
+                      this->Clientes.at(j)->setExtrato(-valorpago);
+                }
             }
         }
         throw userNotFOundException();
@@ -138,9 +189,13 @@ void Banco::transferencia(){ //ainda com o erro grave do balanco
             if(idpaga == this->Contas.at(i)->getId()){
                 this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()+valorpago);
                 this->Contas.at(i)->setExtrato(+valorpago);
+                for(j=0; j < Clientes.size();j++){ 
+                      if(this->Contas.at(i)->getCpf() == this->Clientes.at(j)->getCpf())
+                      this->Clientes.at(j)->setExtrato(+valorpago);
+                }
             }
-        }
-
+        } 
+        
         throw userNotFOundException();
     }
 
@@ -151,10 +206,18 @@ void Banco::transferencia(){ //ainda com o erro grave do balanco
             if(idpaga == this->Contas.at(i)->getId()){
                 this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()+valorpago);
                 this->Contas.at(i)->setExtrato(+valorpago);
+                for(j=0; j < Clientes.size();j++){ 
+                      if(this->Contas.at(i)->getCpf() == this->Clientes.at(j)->getCpf())
+                      this->Clientes.at(j)->setExtrato(+valorpago);
+                }
             }
             if(idrecebe == this->Contas.at(i)->getId()){
                 this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()-valorpago);
                 this->Contas.at(i)->setExtrato(-valorpago);
+                for(j=0; j < Clientes.size();j++){ 
+                      if(this->Contas.at(i)->getCpf() == this->Clientes.at(j)->getCpf())
+                      this->Clientes.at(j)->setExtrato(-valorpago);
+                }
             }
         }
         throw wrongBalanceException();
@@ -168,6 +231,7 @@ void Banco::transferencia(){ //ainda com o erro grave do balanco
 
 }
 
-    
+ 
+
 
 

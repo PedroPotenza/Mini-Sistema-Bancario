@@ -32,9 +32,11 @@ int main(int argc, char* argv[]){
 
 	agencia->adicionaConta(new Conta(std::string("Arthur"),892));
 	agencia->adicionaConta(new Conta(std::string("Clovis"),7));
-	agencia->adicionaConta(new Conta(std::string("Carlos"),9));
+	agencia->adicionaConta(new Conta(std::string("Carlos"),9)); 
 	agencia->adicionaConta(new Conta(std::string("Arthur"),892));
 	agencia->adicionaConta(new Conta(std::string("Carlos"),9));
+
+	agencia->ExtratoClienteStart();
 
 	do {
 		std::cout << std::endl << "Escolha um item pelo numero:" << std::endl;
@@ -79,10 +81,25 @@ int main(int argc, char* argv[]){
 				
 				break;
 			case 3:
-				try {
-					agencia->showExtrato();
-				} catch (exception& e) {
-					cout << e.what() << '\n';
+
+				std::cout << "(1) Extrato do cliente" << std::endl;
+				std::cout << "(2) Extrato da conta" << std::endl;
+
+				std::cin >> subOpcao;
+				if(subOpcao == 1){
+					try {
+						agencia->showExtratoCliente();
+					} catch (exception& e) {
+						cout << e.what() << '\n';
+					}
+				} else if (subOpcao == 2) {
+					try {
+						agencia->showExtratoConta();
+					} catch (exception& e) {
+						cout << e.what() << '\n';
+					}
+				} else {
+					std::cout << "Opcao invalida" << std::endl;
 				}
 				break;
 			case 4:

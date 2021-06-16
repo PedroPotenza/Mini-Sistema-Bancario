@@ -24,8 +24,10 @@
       void showContas();
       void saldoCliente();
       void saldoConta();
-      void showExtrato();
+      void showExtratoCliente();
+      void showExtratoConta();
       void transferencia();
+      void ExtratoClienteStart();
 
       Banco() : id(Banco::getNumeroAgencias())
       {
