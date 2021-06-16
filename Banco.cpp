@@ -8,7 +8,7 @@
 
 void Banco::showClientes(){
     int i;
-    for(i=0; i < Clientes.size(); i++){
+    for(i=0; i < Clientes.size(); i++){ // Percorre vetor de clientes apra exibir todos
         std::cout << "-------Cliente "<< i + 1 << "--------" << std::endl;
         std::cout << "Nome do cliente: " << Clientes.at(i)->getNome() << std::endl;
         std::cout << "CPF do cliente: " << Clientes.at(i)->getCpf() << "\n"<<  std::endl;
@@ -18,7 +18,7 @@ void Banco::showClientes(){
 
 void Banco::showContas(){
     int i;
-    for(i=0; i < Contas.size(); i++){
+    for(i=0; i < Contas.size(); i++){ // Percorre vetor de contas apra exibir todas
         std::cout << "-------Conta "<< Contas.at(i)->getId() << "--------" << std::endl;
         std::cout << "Nome do Titular da Conta: " << Contas.at(i)->getNome() << std::endl;
         std::cout << "CPF do Titular da Conta: " << Contas.at(i)->getCpf() << "\n"<<  std::endl;
@@ -32,16 +32,16 @@ void Banco::saldoCliente(){
     std::cout << "CPF do Cliente desejado: " ;
     std::cin >> cpflocal;
 
-    for(i=0; i < Contas.size(); i++){
+    for(i=0; i < Contas.size(); i++){ // Percorre vetor de contas para encontrar o saldo do cliente
         if(cpflocal == Contas.at(i)->getCpf()){
             encontrou = 1;
-            saldolocal = saldolocal + Contas.at(i)->getSaldo();
+            saldolocal = saldolocal + Contas.at(i)->getSaldo(); // Recupera saldo
         }
     }
     if(encontrou == 1) {
-        std::cout << "Saldo do cliente: " << std::setprecision(2) << std::fixed << ((float)saldolocal)/100 << std::endl;
+        std::cout << "Saldo do cliente: " << std::setprecision(2) << std::fixed << ((float)saldolocal)/100 << std::endl; // Exibe saldo do cliente
     } else {
-        throw userNotFOundException();
+        throw userNotFOundException(); // Caso cliente nao exista, lanca a excecao
     }
 }
 
@@ -52,19 +52,19 @@ void Banco::saldoConta(){
     std::cin >> idlocal;
 
     for(i=0; i < Contas.size(); i++){
-        if(idlocal == Contas.at(i)->getId()){
+        if(idlocal == Contas.at(i)->getId()){ // Percorre vetor de contas para encontrar o saldo da conta
             encontrou = 1;
-            saldolocal = saldolocal + Contas.at(i)->getSaldo();
+            saldolocal = saldolocal + Contas.at(i)->getSaldo(); // Recupera saldo
         }
     }
     if(encontrou == 1) {
         std::cout << "Saldo da conta: " << std::setprecision(2) << std::fixed << ((float)saldolocal)/100 << std::endl;
     } else {
-        throw accountNotFOundException();
+        throw accountNotFOundException(); // Caso conta nao exista, lanca a excecao
     }
 }
 
-void Banco::ExtratoClienteStart(){
+void Banco::ExtratoClienteStart(){ // Funcao utilizada para inicializar os Extrato dos clientes
 
     int i, j, numContas;
     for(i=0; i < Clientes.size();i++){ 
@@ -74,7 +74,7 @@ void Banco::ExtratoClienteStart(){
         }
 
         for(j=0; j < numContas; j++)
-            Clientes.at(i)->setExtrato(100000);
+            Clientes.at(i)->setExtrato(100000); // Seta extrato inicial de cada cliente
         numContas=0;
     }
 
@@ -100,7 +100,7 @@ void Banco::showExtratoCliente(){
     }
 
     if (!(encontrou == 1))
-        throw userNotFOundException();
+        throw userNotFOundException(); // Caso cliente nao exista, lanca a excecao
 }
 
 void Banco::showExtratoConta(){
@@ -122,7 +122,7 @@ void Banco::showExtratoConta(){
     }
 
     if (!(encontrou == 1))
-        throw accountNotFOundException();
+        throw accountNotFOundException(); // Caso conta nao exista, lanca a excecao
 }
 
 void Banco::transferencia(){ 
@@ -181,7 +181,7 @@ void Banco::transferencia(){
                 }
             }
         }
-        throw userNotFOundException();
+        throw userNotFOundException(); // Caso cliente nao exista, lanca a excecao
     }
 
     if(encontrourecebe != 2){
@@ -196,7 +196,7 @@ void Banco::transferencia(){
             }
         } 
         
-        throw userNotFOundException();
+        throw userNotFOundException(); // Caso cliente nao exista, lanca a excecao
     }
 
     balancofinal = this->calculaBalanco();
