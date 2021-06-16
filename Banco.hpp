@@ -15,14 +15,7 @@
       std::vector<Conta*> Contas;
 
     public:
-<<<<<<< HEAD
-      std::vector<Cliente*> Clientes;
-      std::vector<Conta*> Contas;
-
-      inline int getBalanco() const;
-=======
       inline int calculaBalanco();
->>>>>>> develop
       inline void setBalanco(int valor);
       inline void adicionaCliente(Cliente* cliente);
       inline void adicionaConta(Conta* conta);
