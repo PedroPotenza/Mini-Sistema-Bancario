@@ -9,7 +9,7 @@
 void Banco::showClientes(){
     int i;
     for(i=0; i < Clientes.size(); i++){
-        std::cout << "-------Cliente "<< i + 1 << "--------\n" << std::endl;
+        std::cout << "-------Cliente "<< i + 1 << "--------" << std::endl;
         std::cout << "Nome do cliente: " << Clientes.at(i)->getNome() << std::endl;
         std::cout << "CPF do cliente: " << Clientes.at(i)->getCpf() << "\n"<<  std::endl;
     }

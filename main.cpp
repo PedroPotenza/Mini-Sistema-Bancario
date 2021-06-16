@@ -24,17 +24,17 @@ int main(int argc, char* argv[]){
 	Banco* agencia = new Banco();
 	int opcao = 0, subOpcao = 0;
 
-	agencia->adicionaCliente(new Cliente(std::string("Arthur"),892));
-	agencia->adicionaCliente(new Cliente(std::string("Clovis"),7));
-	agencia->adicionaCliente(new Cliente(std::string("Carlos"),9));
-	agencia->adicionaCliente(new Cliente(std::string("Klaus"),497));
-	agencia->adicionaCliente(new Cliente(std::string("Patricia"),576));
+	agencia->adicionaCliente(new Cliente(std::string("Pedro Potenza"),12345671));
+	agencia->adicionaCliente(new Cliente(std::string("Gabriel Tetzlaf"),12345672));
+	agencia->adicionaCliente(new Cliente(std::string("Thiago Gottardi"),12345673));
+	agencia->adicionaCliente(new Cliente(std::string("Claudia Soares"),12345674));
+	agencia->adicionaCliente(new Cliente(std::string("Maria Antonieta"),12345675));
 
-	agencia->adicionaConta(new Conta(std::string("Arthur"),892));
-	agencia->adicionaConta(new Conta(std::string("Clovis"),7));
-	agencia->adicionaConta(new Conta(std::string("Carlos"),9)); 
-	agencia->adicionaConta(new Conta(std::string("Arthur"),892));
-	agencia->adicionaConta(new Conta(std::string("Carlos"),9));
+	agencia->adicionaConta(new Conta(std::string("Pedro Potenza"),12345671));
+	agencia->adicionaConta(new Conta(std::string("Gabriel Tetzlaf"),12345672));
+	agencia->adicionaConta(new Conta(std::string("Thiago Gottardi"),12345673)); 
+	agencia->adicionaConta(new Conta(std::string("Claudia Soares"),12345674));
+	agencia->adicionaConta(new Conta(std::string("Maria Antonieta"),12345675));
 
 	agencia->ExtratoClienteStart();
 
