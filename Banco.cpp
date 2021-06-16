@@ -92,9 +92,9 @@ void Banco::showExtratoCliente(){
             encontrou = 1;
             for(j=0; j < Clientes.at(i)->getTamExtrato(); j++){  
                 if(Clientes.at(i)->getExtrato(j) > 0)
-                    std::cout << "+" << std::setprecision(2) << std::fixed  << ((float)Clientes.at(i)->getExtrato(j))/100 << std::endl;
+                    std::cout << "+" << std::setprecision(2) << std::fixed  << ((float)Clientes.at(i)->getExtrato(j))/100 << std::endl; // Exibe extrato de créditos
                 else
-                    std::cout << std::setprecision(2) << std::fixed << ((float)Clientes.at(i)->getExtrato(j))/100 << std::endl;
+                    std::cout << std::setprecision(2) << std::fixed << ((float)Clientes.at(i)->getExtrato(j))/100 << std::endl; // Exibe extrato de débitos
             }
         }
     }
@@ -114,9 +114,9 @@ void Banco::showExtratoConta(){
             encontrou = 1;
             for(j=0; j < Contas.at(i)->getTamExtrato(); j++){    
                 if(Contas.at(i)->getExtrato(j) > 0)
-                    std::cout << "+" << std::setprecision(2) << std::fixed  << ((float)Contas.at(i)->getExtrato(j))/100 << std::endl;
+                    std::cout << "+" << std::setprecision(2) << std::fixed  << ((float)Contas.at(i)->getExtrato(j))/100 << std::endl; // Exibe extrato de créditos
                 else
-                    std::cout << std::setprecision(2) << std::fixed << ((float)Contas.at(i)->getExtrato(j))/100 << std::endl;
+                    std::cout << std::setprecision(2) << std::fixed << ((float)Contas.at(i)->getExtrato(j))/100 << std::endl; // Exibe extrato de débitos
             }
         }
     }
@@ -144,33 +144,33 @@ void Banco::transferencia(){
     valorpago = (int)valorinformado;
 
     for(i=0; i < this->Contas.size();i++){
-        if(idpaga == this->Contas.at(i)->getId()){
+        if(idpaga == this->Contas.at(i)->getId()){ // Percorre a procura da conta que enviara dinheiro
             encontroupaga = 1;
             if(Contas.at(i)->getSaldo() < valorpago){
-                throw lowBalanceException();
+                throw lowBalanceException(); // Excecao lancada quando usuario nao tem o valor suficiente
             } else {
-                this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()-valorpago);
-                this->Contas.at(i)->setExtrato(-valorpago);
+                this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()-valorpago); // Retira valor do cliente que paga
+                this->Contas.at(i)->setExtrato(-valorpago); // Coloca no extrato da conta
                 for(j=0; j < Clientes.size();j++){ 
-                      if(this->Contas.at(i)->getCpf() == this->Clientes.at(j)->getCpf())
-                      this->Clientes.at(j)->setExtrato(-valorpago);
+                      if(this->Contas.at(i)->getCpf() == this->Clientes.at(j)->getCpf()) 
+                      this->Clientes.at(j)->setExtrato(-valorpago); // Coloca no extrato do cliente
                 }
             }
         }
         
-        if(idrecebe == this->Contas.at(i)->getId()){
+        if(idrecebe == this->Contas.at(i)->getId()){ // Percorre a procura da conta que recebera dinheiro
             encontrourecebe = 2;
-            this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()+valorpago);
-            this->Contas.at(i)->setExtrato(+valorpago);
+            this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()+valorpago); // Adiciona valor a conta do cliente
+            this->Contas.at(i)->setExtrato(+valorpago); // Coloca no extrato da conta
             for(j=0; j < Clientes.size();j++){ 
                       if(this->Contas.at(i)->getCpf() == this->Clientes.at(j)->getCpf())
-                      this->Clientes.at(j)->setExtrato(+valorpago);
+                      this->Clientes.at(j)->setExtrato(+valorpago); // Coloca no extrato do cliente
                 }
             }
             
     }
 
-    if(encontroupaga != 1){
+    if(encontroupaga != 1){ // Se nao encontrar o cliente que enviou o dinheiro ele extorna a transferencia para nao afetar no balanco final do banco
         for(i=0; i < this->Contas.size();i++){
             if(idrecebe == this->Contas.at(i)->getId()){
                 this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()-valorpago);
@@ -184,7 +184,7 @@ void Banco::transferencia(){
         throw userNotFOundException(); // Caso cliente nao exista, lanca a excecao
     }
 
-    if(encontrourecebe != 2){
+    if(encontrourecebe != 2){ // Se nao encontrar o cliente que recebeu o dinheiro ele extorna a transferencia para nao afetar no balanco final do banco
         for(i=0; i < this->Contas.size();i++){
             if(idpaga == this->Contas.at(i)->getId()){
                 this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()+valorpago);
@@ -199,9 +199,9 @@ void Banco::transferencia(){
         throw userNotFOundException(); // Caso cliente nao exista, lanca a excecao
     }
 
-    balancofinal = this->calculaBalanco();
+    balancofinal = this->calculaBalanco(); // Calculo do balanco final
 
-    if( !(balancoinicial == balancofinal) ) {
+    if( !(balancoinicial == balancofinal) ) { // Se o balanco final for diferente do inicial extorna a transferencia 
         for(i=0; i < this->Contas.size();i++){
             if(idpaga == this->Contas.at(i)->getId()){
                 this->Contas.at(i)->setSaldo(this->Contas.at(i)->getSaldo()+valorpago);
@@ -220,7 +220,7 @@ void Banco::transferencia(){
                 }
             }
         }
-        throw wrongBalanceException();
+        throw wrongBalanceException(); // Excecao de balanco do banco adulterado
     }     
 
     //eu poderia evitar utilizar estruturas de repetição para localizar o id das contas pois elas são facilmente
