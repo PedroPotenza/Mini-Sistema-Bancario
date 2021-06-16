@@ -24,10 +24,7 @@
 		
 	};
 	
-	//getters e setters desnecessários
-	//vi dps que não é necessario ter a opcao do menu para cadastrar os clientes
-
-	//serviu de teste e treino
+	// Getters e Setters feitos para possivel evolucao do codigo onde eria possivel criar e alterar clientes
 
 	inline std::string Cliente::getNome() const
 	{
